@@ -1,0 +1,155 @@
+---
+const services = [
+  {
+    tag: "コーポレートサイト",
+    title: "シンプルサイト",
+    desc: "まずは自社のホームページを制作し、更新頻度がほとんどない方向け 弊社提案のサンプルデザインまたはお客様指定の参考サイトを元に小規模ページの制作を実施。",
+    price: "20万円～",
+    href: "https://aozora-okinawa.com/service/corporate-site?id=base",
+  },
+  {
+    tag: "コーポレートサイト",
+    title: "フルオーダーWordpressプラン",
+    desc: "オリジナルデザインで、お知らせや商品などの更新頻度が高い方向け。構築後は自社で更新対応を運用することも可能。",
+    price: "60万円～",
+    href: "https://aozora-okinawa.com/service/corporate-site?id=site",
+  },
+  {
+    tag: "ECサイト",
+    title: "Shopify",
+    desc: "テンプレートのカスタマイズ性が高く､EC運用に有用な機能が多数あり､標準機能でもメールマガジンの配信やインスタグラム連携などマーケティング機能が利用可能",
+    price: "60万円～",
+    href: "https://aozora-okinawa.com/service/ecommerce?id=shopify",
+  },
+  {
+    tag: "マッチング",
+    title: "マッチングサイト",
+    desc: "スキルマッチング、商品マッチング、時間や場所のマッチングなど、今話題のシェアリングエコノミーサービスを始めませんか？独自エンジンを元に、スピーディーに開発します。",
+    price: "100万円～",
+    href: "https://aozora-okinawa.com/service?id=matching",
+  },
+];
+---
+
+<section id="service" class="py-24 lg:py-32 bg-slate">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+    <div
+      class="text-xs uppercase tracking-widest text-cyan mb-6"
+      data-reveal
+      data-scramble="Service"
+    >Service</div>
+
+    <h2 data-i18n="service-h2" class="font-bold text-3xl lg:text-4xl mb-4 text-cloud" data-reveal>ウェブサイト制作・コーディング</h2>
+    <p data-i18n="service-p" class="text-cloud/60 text-base lg:text-lg mb-12 max-w-2xl" data-reveal>
+      確かな技術と品質で、ターゲットやデバイスに最適なWEBサイトを制作。
+    </p>
+
+    <div class="flex flex-wrap gap-4 mb-10" data-reveal>
+      <div class="relative overflow-hidden rounded-sm flex-1 min-w-[200px] h-80">
+        <img src="/services1.jpg" alt="サービスイメージ 1" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-space/60 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+      <div class="relative overflow-hidden rounded-sm flex-1 min-w-[200px] h-80">
+        <img src="/services%202.jpg" alt="サービスイメージ 2" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-space/60 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+      <div class="relative overflow-hidden rounded-sm flex-1 min-w-[200px] h-80">
+        <img src="/services3.jpg" alt="サービスイメージ 3" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-space/60 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+
+    <div class="py-10 border-y border-slate/40 mb-10" data-reveal>
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-cyan mb-3">What We Offer</p>
+          <h3 data-i18n="service-interstitial-h3" class="font-bold text-2xl lg:text-3xl text-cloud leading-snug max-w-xl">
+            お客様のビジネスに合わせた<br class="hidden sm:block" />最適なソリューションを提供します。
+          </h3>
+        </div>
+        <p data-i18n="service-interstitial-p" class="text-cloud/50 text-sm leading-relaxed max-w-sm lg:text-right">
+          コーポレートサイトからECサイト、マッチングプラットフォームまで、青空が培った技術力でお客様の課題を解決します。
+        </p>
+      </div>
+    </div>
+
+    <div class="border border-accent/25 bg-paper rounded-sm p-6 lg:p-8 shadow-sm" data-reveal>
+
+      <div class="flex items-center gap-3 mb-8 pb-6 border-b border-accent/15">
+        <span class="w-1 h-6 bg-cyan rounded-full inline-block"></span>
+        <h3 data-i18n="service-container-h3" class="text-lg font-bold text-cloud">提供サービス一覧</h3>
+        <span data-i18n="service-count" class="ml-auto text-xs text-cloud/30 tabular">{services.length} サービス</span>
+      </div>
+
+      <div class="flex flex-wrap gap-6">
+        {services.map((s, i) => (
+          <article class="card-tilt flex flex-col border border-accent/25 bg-paper hover:border-accent/60 transition-all duration-300 overflow-hidden w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shadow-sm hover:shadow-md">
+            <div class="p-6 flex flex-col flex-1">
+              {s.tag && <div data-i18n={`service-card-${i}-tag`} class="text-xs text-cyan mb-2 tracking-wide">{s.tag}</div>}
+              <h4 data-i18n={`service-card-${i}-title`} class="font-bold text-base lg:text-lg mb-3 text-cloud leading-snug">{s.title}</h4>
+              <p data-i18n={`service-card-${i}-desc`} class="text-cloud/55 text-xs leading-relaxed mb-6 flex-1">{s.desc}</p>
+              <div class="flex items-center justify-between pt-4 border-t border-slate/50">
+                <span class="font-bold text-cyan text-sm">{s.price}</span>
+                <a href={s.href} data-i18n="service-details-link" class="text-xs text-cloud/40 hover:text-cyan transition-colors">詳細 →</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8" data-reveal>
+
+      <div class="card-tilt border border-accent/25 bg-paper hover:border-accent/60 transition-all duration-300 rounded-sm p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md">
+        <div class="w-24 h-24 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12h19M12 2.5a15.3 15.3 0 0 1 4 9.5 15.3 15.3 0 0 1-4 9.5M12 2.5a15.3 15.3 0 0 0-4 9.5 15.3 15.3 0 0 0 4 9.5" />
+          </svg>
+        </div>
+        <h4 data-i18n="service-extra-0-title" class="font-bold text-lg text-cloud mb-3">保守・運営サポート</h4>
+        <p data-i18n="service-extra-0-desc" class="text-cloud/55 text-sm leading-relaxed">更新業務、サーバー・ドメインの管理、SEO対策など、サイト運用に関わる業務をサポート。</p>
+      </div>
+
+      <div class="card-tilt border border-accent/25 bg-paper hover:border-accent/60 transition-all duration-300 rounded-sm p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md">
+        <div class="w-24 h-24 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2 9.5A2.5 2.5 0 0 1 4.5 7h15A2.5 2.5 0 0 1 22 9.5v5A2.5 2.5 0 0 1 19.5 17h-15A2.5 2.5 0 0 1 2 14.5v-5z" />
+            <circle cx="8.5" cy="12" r="2" fill="currentColor" stroke="none" />
+            <circle cx="15.5" cy="12" r="2" fill="currentColor" stroke="none" />
+            <path stroke-linecap="round" d="M10.5 12h3" />
+          </svg>
+        </div>
+        <h4 data-i18n="service-extra-1-title" class="font-bold text-lg text-cloud mb-3">VRコンテンツ制作</h4>
+        <p data-i18n="service-extra-1-desc" class="text-cloud/55 text-sm leading-relaxed">スマートフォンの加速度センサーを使い空間を「体感」できるサービスです。</p>
+      </div>
+
+      <div class="card-tilt border border-accent/25 bg-paper hover:border-accent/60 transition-all duration-300 rounded-sm p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md">
+        <div class="w-24 h-24 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 11h4M11 9v4" />
+          </svg>
+        </div>
+        <h4 data-i18n="service-extra-2-title" class="font-bold text-lg text-cloud mb-3">SEO対策</h4>
+        <p data-i18n="service-extra-2-desc" class="text-cloud/55 text-sm leading-relaxed">SEOの最新傾向を反映しながら効果の上がるコンテンツ、サイト構造を構築。</p>
+      </div>
+
+      <div class="card-tilt border border-accent/25 bg-paper hover:border-accent/60 transition-all duration-300 rounded-sm p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md">
+        <div class="w-24 h-24 rounded-full bg-cyan/10 border border-cyan/30 flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.5" fill="none" />
+            <circle cx="12" cy="18.5" r="1" fill="currentColor" stroke="none" />
+            <path stroke-linecap="round" d="M9.5 6.5l1.5 1.5-1.5 1.5M13 9.5h1.5" />
+          </svg>
+        </div>
+        <h4 data-i18n="service-extra-3-title" class="font-bold text-lg text-cloud mb-3">オリジナルアプリ制作</h4>
+        <p data-i18n="service-extra-3-desc" class="text-cloud/55 text-sm leading-relaxed">ビジネスを最適化するBtoB／BtoCアプリを素早く、リーズナブルに開発。</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

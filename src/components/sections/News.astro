@@ -1,0 +1,32 @@
+---
+const news = [
+  { date: "2026.01.06", category: "お知らせ", title: "新年のご挨拶", href: "https://aozora-okinawa.com/news/" },
+  { date: "2025.10.01", category: "お知らせ", title: "ウェブサイトをリニューアルしました", href: "https://aozora-okinawa.com/news/" },
+  { date: "2025.04.01", category: "サービス", title: "ネパール拠点を活用したオフショア開発サービスのご案内", href: "https://aozora-okinawa.com/news/" },
+];
+---
+
+<section id="news" class="py-24 lg:py-32 bg-space">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="text-xs uppercase tracking-widest text-cyan mb-6" data-reveal data-scramble="News">News</div>
+    <h2 class="font-bold text-3xl lg:text-4xl mb-12 text-cloud" data-reveal>News</h2>
+
+    <ul class="border-t border-slate/60">
+      {news.map((item, i) => (
+        <li class="border-b border-slate/60" data-reveal>
+          <a href={item.href} class="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 py-6 items-baseline hover:text-cyan transition-colors">
+            <span class="sm:col-span-2 text-sm text-cloud/40 tabular">{item.date}</span>
+            <span data-i18n={`news-cat-${i}`} class="sm:col-span-2 text-xs text-cloud/40">{item.category}</span>
+            <span data-i18n={`news-title-${i}`} class="sm:col-span-8 text-base lg:text-lg text-cloud">{item.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-12" data-reveal>
+      <a href="https://aozora-okinawa.com/news" data-i18n="news-all" class="inline-block rounded-full border border-azure/40 text-azure px-6 py-3 text-sm hover:bg-azure hover:text-space hover:border-azure transition-colors">
+        一覧を見る
+      </a>
+    </div>
+  </div>
+</section>

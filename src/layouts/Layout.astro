@@ -1,0 +1,115 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import AnimationController from "../components/AnimationController.astro";
+import Reveal from "../components/Reveal.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "HP制作・Web開発の株式会社青空｜沖縄・東京・ネパール",
+  description = "株式会社青空は沖縄県沖縄市に本社を、那覇市や東京、ネパールに支社をおくHP制作会社です。HP制作はHTML,CSS,WordPress組込み等、ECサイト構築はShopify,WordPress等を使った制作を数多く行っています",
+  canonical = "https://aozora-okinawa.com/",
+} = Astro.props;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "株式会社青空",
+    alternateName: "Aozora Co., Ltd.",
+    url: "https://aozora-okinawa.com/",
+    logo: "https://aozora-okinawa.com/favicon.svg",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+81-98-989-6318",
+      contactType: "customer service",
+      areaServed: "JP",
+      availableLanguage: ["ja", "en"],
+    },
+    sameAs: [],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "株式会社青空",
+    url: "https://aozora-okinawa.com/",
+    image: "https://aozora-okinawa.com/header.jpg",
+    telephone: "+81-98-989-6318",
+    address: {
+      "@type": "PostalAddress",
+      postalCode: "904-0011",
+      addressCountry: "JP",
+      addressRegion: "沖縄県",
+      addressLocality: "沖縄市",
+      streetAddress: "照屋1-11-13 2F",
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+  },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hrefLang="ja" href={canonical} />
+    <link rel="alternate" hrefLang="x-default" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="株式会社青空" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content="https://aozora-okinawa.com/header.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://aozora-okinawa.com/header.jpg" />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-paper text-ink antialiased">
+    <!-- Scroll progress -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+    <!-- Custom cursor (hidden on touch via CSS) -->
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+    <!-- Film grain -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <slot />
+    <Reveal />
+    <AnimationController />
+  </body>
+</html>

@@ -1,0 +1,236 @@
+---
+const offices = [
+  {
+    name: "沖縄本社（沖縄市）",
+    postal: "〒904-0011",
+    address: "沖縄県沖縄市照屋1-11-13 2F",
+    telFax: "098-989-6318 / 098-989-6319",
+    mapQuery: "沖縄県沖縄市照屋1-11-13",
+  },
+  {
+    name: "那覇支社（那覇市）",
+    postal: "〒902-0067",
+    address: "沖縄県那覇市安里381-1 5F",
+    telFax: "098-989-6318 / 098-989-6319",
+    mapQuery: "沖縄県那覇市安里381-1",
+  },
+  {
+    name: "東京支社（東京）",
+    postal: "〒101-0041",
+    address: "東京都千代田区神田須田町1丁目17 神田須田町117ビルディング4F",
+    telFax: "-",
+    mapQuery: "東京都千代田区神田須田町1丁目17",
+  },
+  {
+    name: "ネパール支社（カトマンズ）",
+    postal: "44600",
+    address: "Bashundhara Ring Rd Track S, Kathmandu",
+    telFax: "01-4813056",
+    mapQuery: "Bashundhara Ring Rd Track S, Kathmandu 44600",
+  },
+];
+---
+
+<section id="map" class="py-24 lg:py-32 bg-space">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="text-xs uppercase tracking-widest text-cyan mb-6" data-reveal>Map</div>
+    <h2 data-i18n="map-h2" class="font-bold text-3xl lg:text-4xl text-cloud mb-4" data-reveal>アクセス</h2>
+    <p data-i18n="map-p" class="text-cloud/60 text-base lg:text-lg mb-12 max-w-2xl" data-reveal>
+      各拠点の所在地をスライドで確認できます。矢印またはドットから切り替えてご覧ください。
+    </p>
+
+    <div id="map-carousel" class="relative" data-reveal>
+      <div class="overflow-hidden rounded-sm border border-slate/70 bg-slate/20">
+        <div id="map-track" class="flex transition-transform duration-500 ease-out will-change-transform">
+          {offices.map((office, i) => (
+            <article class="w-full shrink-0 p-5 lg:p-8">
+              <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-6 lg:gap-8">
+                <div class="relative overflow-hidden rounded-sm border border-slate/60 min-h-[260px] lg:min-h-[360px]">
+                  <iframe
+                    title={`${office.name} map`}
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(office.mapQuery)}&z=15&output=embed`}
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="absolute inset-0 w-full h-full"
+                  ></iframe>
+                </div>
+
+                <div class="border border-slate/60 bg-space/40 rounded-sm p-5 lg:p-6">
+                  <p class="text-xs uppercase tracking-widest text-cyan mb-2">Office</p>
+                  <h3 data-i18n={`map-office-${i}-name`} class="text-cloud font-bold text-xl lg:text-2xl mb-5 leading-snug">{office.name}</h3>
+
+                  <dl class="space-y-4 text-sm">
+                    <div>
+                      <dt data-i18n="map-label-postal" class="text-cloud/45 mb-1">郵便番号</dt>
+                      <dd class="text-cloud">{office.postal}</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="map-label-address" class="text-cloud/45 mb-1">住所</dt>
+                      <dd class="text-cloud leading-relaxed">{office.address}</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="map-label-telfax" class="text-cloud/45 mb-1">TEL / FAX</dt>
+                      <dd class="text-cloud">{office.telFax}</dd>
+                    </div>
+                  </dl>
+
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.mapQuery)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 mt-6 text-sm text-cyan hover:text-accent transition-colors"
+                  >
+                    <span data-i18n="map-open-maps">Google Mapsで開く</span>
+                    <span aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between mt-6 gap-4">
+        <div class="flex items-center gap-2">
+          <button
+            id="map-prev"
+            type="button"
+            class="w-10 h-10 rounded-full border border-slate/60 text-cloud/70 hover:text-cloud hover:border-accent/60 transition-colors"
+            aria-label="前の拠点を見る"
+          >
+            <span aria-hidden="true">&#8592;</span>
+          </button>
+          <button
+            id="map-next"
+            type="button"
+            class="w-10 h-10 rounded-full border border-slate/60 text-cloud/70 hover:text-cloud hover:border-accent/60 transition-colors"
+            aria-label="次の拠点を見る"
+          >
+            <span aria-hidden="true">&#8594;</span>
+          </button>
+        </div>
+
+        <div id="map-dots" class="flex items-center gap-2" aria-label="拠点スライドナビゲーション">
+          {offices.map((office, i) => (
+            <button
+              type="button"
+              class={`map-dot w-2.5 h-2.5 rounded-full transition-all ${i === 0 ? "bg-cyan scale-110" : "bg-cloud/30 hover:bg-cloud/50"}`}
+              data-index={i}
+              aria-label={`${office.name}へ移動`}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const carousel = document.getElementById("map-carousel");
+    const track = document.getElementById("map-track");
+    const prevButton = document.getElementById("map-prev");
+    const nextButton = document.getElementById("map-next");
+    const dots = Array.from(document.querySelectorAll(".map-dot"));
+
+    if (!carousel || !track || !prevButton || !nextButton || dots.length === 0) {
+      return;
+    }
+
+    const slideCount = dots.length;
+    let activeIndex = 0;
+    let autoplayTimer = null;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const nextSlide = () => {
+      activeIndex = (activeIndex + 1) % slideCount;
+      render();
+    };
+
+    const previousSlide = () => {
+      activeIndex = (activeIndex - 1 + slideCount) % slideCount;
+      render();
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayTimer = window.setInterval(nextSlide, 5000);
+    };
+
+    const render = () => {
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add("bg-cyan", "scale-110");
+          dot.classList.remove("bg-cloud/30", "hover:bg-cloud/50");
+        } else {
+          dot.classList.remove("bg-cyan", "scale-110");
+          dot.classList.add("bg-cloud/30", "hover:bg-cloud/50");
+        }
+      });
+    };
+
+    prevButton.addEventListener("click", () => {
+      previousSlide();
+      startAutoplay();
+    });
+
+    nextButton.addEventListener("click", () => {
+      nextSlide();
+      startAutoplay();
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        activeIndex = idx;
+        render();
+        startAutoplay();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    carousel.addEventListener(
+      "touchstart",
+      (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    carousel.addEventListener(
+      "touchend",
+      (event) => {
+        touchEndX = event.changedTouches[0].clientX;
+        const delta = touchEndX - touchStartX;
+
+        if (Math.abs(delta) < 40) {
+          return;
+        }
+
+        if (delta > 0) {
+          previousSlide();
+        } else {
+          nextSlide();
+        }
+
+        startAutoplay();
+      },
+      { passive: true }
+    );
+
+    startAutoplay();
+  })();
+</script>

@@ -1,0 +1,76 @@
+---
+const stats = [
+  { value: "4", label: "事業所数", suffix: "拠点", i18nLabel: "about-stat-0-label", i18nSuffix: "about-stat-0-suffix" },
+  { value: "30", label: "スタッフ人数", suffix: "人", i18nLabel: "about-stat-1-label", i18nSuffix: "about-stat-1-suffix" },
+  { value: "150", label: "年間プロジェクト数", suffix: "件以上", i18nLabel: "about-stat-2-label", i18nSuffix: "about-stat-2-suffix" },
+];
+---
+
+<section id="about" class="py-24 lg:py-32 bg-space">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+    <div
+      class="text-xs uppercase tracking-widest text-cyan mb-6"
+      data-reveal
+      data-scramble="About"
+    >About</div>
+
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
+      <div>
+        <h2
+          data-i18n="about-h2"
+          class="font-bold text-2xl sm:text-3xl lg:text-4xl leading-relaxed mb-8 text-cloud"
+          data-reveal
+        >
+          私たち株式会社青空は、沖縄・東京・ネパールに拠点を置くWEB制作会社です。
+        </h2>
+        <p
+          data-i18n="about-p"
+          class="text-cloud/60 text-base lg:text-lg leading-loose"
+          data-reveal
+        >
+          各拠点で連携を取りながら、それぞれの強みを生かしお客様に【ちょっと】驚いてもらうサービスを制作・提供致します。
+        </p>
+      </div>
+
+      <!-- Image with wipe reveal -->
+      <div class="relative overflow-hidden rounded-sm" data-reveal-image>
+        <img
+          src="/about_us.jpg"
+          alt="株式会社青空のチーム"
+          class="w-full h-72 lg:h-96 object-cover"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-tr from-cyan/10 via-transparent to-cyan/5 pointer-events-none z-10"></div>
+        <!-- Wipe overlay (slid away by GSAP) -->
+        <div class="image-wipe"></div>
+      </div>
+    </div>
+
+    <!-- Stats with counter animation -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-accent/20 border border-accent/30"
+      data-reveal
+    >
+      {stats.map((s, i) => (
+        <div class="bg-slate p-8">
+          <div
+            data-i18n={s.i18nLabel}
+            class="text-xs text-cloud/50 mb-3"
+          >{s.label}</div>
+          <div class="flex items-baseline gap-2">
+            <span
+              class="text-4xl lg:text-5xl font-bold tabular text-cloud"
+              data-counter={s.value}
+            >0</span>
+            <span
+              data-i18n={s.i18nSuffix}
+              class="text-sm text-cyan"
+            >{s.suffix}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

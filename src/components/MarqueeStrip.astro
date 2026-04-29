@@ -1,0 +1,35 @@
+---
+const icons = [
+  { class: 'devicon-html5-plain colored',       label: 'HTML5' },
+  { class: 'devicon-css3-plain colored',        label: 'CSS3' },
+  { class: 'devicon-javascript-plain colored',  label: 'JavaScript' },
+  { class: 'devicon-typescript-plain colored',  label: 'TypeScript' },
+  { class: 'devicon-react-original colored',    label: 'React' },
+  { class: 'devicon-nextjs-plain',              label: 'Next.js' },
+  { class: 'devicon-vuejs-plain colored',       label: 'Vue.js' },
+  { class: 'devicon-nodejs-plain colored',      label: 'Node.js' },
+  { class: 'devicon-php-plain colored',         label: 'PHP' },
+  { class: 'devicon-wordpress-plain colored',   label: 'WordPress' },
+  { class: 'devicon-python-plain colored',      label: 'Python' },
+  { class: 'devicon-figma-plain colored',       label: 'Figma' },
+  { class: 'devicon-git-plain colored',         label: 'Git' },
+  { class: 'devicon-docker-plain colored',      label: 'Docker' },
+  { class: 'devicon-tailwindcss-plain colored', label: 'Tailwind CSS' },
+];
+---
+
+<div class="relative overflow-hidden py-10 select-none" aria-hidden="true">
+  <!-- Left fade -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-40 bg-gradient-to-r from-paper to-transparent"></div>
+  <!-- Right fade -->
+  <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-40 bg-gradient-to-l from-paper to-transparent"></div>
+
+  <div class="animate-marquee flex whitespace-nowrap w-max items-stretch gap-4">
+    {[...icons, ...icons].map((icon) => (
+      <div class="inline-flex flex-col items-center justify-center gap-3 w-36 h-24 border border-slate/20 bg-paper/60 rounded-lg px-4 shrink-0">
+        <i class={`${icon.class} text-4xl`}></i>
+        <span class="text-[9px] tracking-[0.18em] text-cloud/50 uppercase font-medium">{icon.label}</span>
+      </div>
+    ))}
+  </div>
+</div>

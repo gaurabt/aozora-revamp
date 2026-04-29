@@ -1,0 +1,487 @@
+---
+const navItems = [
+  { label: "About", href: "/#about" },
+  { label: "News", href: "/#news" },
+  { label: "Service", href: "/#service" },
+  { label: "Company", href: "/#company" },
+  { label: "Map", href: "/#map" },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  data-header
+>
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 h-[72px] flex items-center justify-between gap-8">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group shrink-0" aria-label="株式会社青空 ホームへ">
+      <div class="h-9 w-9 rounded-md bg-[#007AFF] grid place-items-center shrink-0 transition-all duration-300 shadow-[0_2px_14px_rgba(0,122,255,0.35)] group-hover:bg-[#006ce0] group-hover:shadow-[0_4px_22px_rgba(0,122,255,0.45)] group-hover:-translate-y-px">
+        <svg viewBox="0 0 100 100" class="h-[20px] w-[20px] text-white" fill="currentColor" aria-hidden="true">
+          <circle cx="35" cy="42" r="7" />
+          <circle cx="65" cy="42" r="7" />
+          <path d="M28 62 Q50 82 72 62" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round" />
+        </svg>
+      </div>
+      <div class="flex flex-col leading-none gap-[5px]">
+        <span class="font-bold text-cloud text-[15px] tracking-wider">Aozora</span>
+        <span class="text-cloud/30 text-[9px] tracking-[0.22em] uppercase font-medium">株式会社青空</span>
+      </div>
+    </a>
+
+    <!-- Divider -->
+    <div class="hidden md:block w-px h-5 bg-slate/70 shrink-0"></div>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-0.5 flex-1" aria-label="Primary">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="relative px-3.5 py-2 text-[13px] font-medium text-cloud/55 hover:text-cloud transition-colors duration-200 rounded-sm hover:bg-white/[0.04] group/link"
+        >
+          {item.label}
+          <span class="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-accent rounded-full scale-x-0 origin-left group-hover/link:scale-x-100 transition-transform duration-200"></span>
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA + lang toggle + mobile toggle -->
+    <div class="flex items-center gap-3">
+
+      <!-- Language toggle (desktop) -->
+      <div class="hidden md:flex items-center border border-slate/50 rounded-sm overflow-hidden text-[11px] font-semibold tracking-widest shrink-0" id="lang-switcher-desktop">
+        <button
+          data-lang-btn="ja"
+          class="px-2.5 py-1.5 transition-colors duration-150 text-cloud bg-slate/40 hover:bg-slate/60"
+          aria-label="日本語に切り替え"
+        >JP</button>
+        <span class="w-px h-3 bg-slate/70 shrink-0"></span>
+        <button
+          data-lang-btn="en"
+          class="px-2.5 py-1.5 transition-colors duration-150 text-cloud/40 hover:text-cloud hover:bg-slate/30"
+          aria-label="Switch to English"
+        >EN</button>
+      </div>
+
+      <a
+        href="/contact"
+        class="hidden md:inline-flex items-center gap-2 rounded-md bg-azure px-5 py-2.5 text-[13px] text-space font-semibold hover:bg-[#E7AE36] transition-all duration-200 shadow-[0_2px_14px_rgba(255,198,79,0.35)] hover:shadow-[0_4px_20px_rgba(255,198,79,0.45)] hover:-translate-y-px"
+      >
+        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 43.64 33.21" fill="currentColor" aria-hidden="true">
+          <path d="M38.32,0h-33A5.34,5.34,0,0,0,0,5.34V27.88a5.34,5.34,0,0,0,5.34,5.33h33a5.33,5.33,0,0,0,5.33-5.33V5.35A5.33,5.33,0,0,0,38.32,0Zm2.9,27.88a2.9,2.9,0,0,1-2.9,2.9h-33a2.9,2.9,0,0,1-2.9-2.9V5.35a2.9,2.9,0,0,1,2.9-2.9h33a2.9,2.9,0,0,1,2.9,2.9V27.88Z"/>
+          <path d="M27.53,16.33,38.2,6.75a1.22,1.22,0,1,0-1.63-1.81L21.84,18.15,19,15.59a0,0,0,0,1,0,0l-.2-.17L7.07,4.93A1.22,1.22,0,0,0,5.45,6.75l10.8,9.66L5.49,26.48a1.22,1.22,0,0,0,.84,2.11,1.23,1.23,0,0,0,.83-.32L18.08,18.05l3,2.65a1.2,1.2,0,0,0,.81.3,1.22,1.22,0,0,0,.82-.31l3-2.73L36.57,28.27a1.18,1.18,0,0,0,.83.34,1.22,1.22,0,0,0,.84-2.11Z"/>
+        </svg>
+        <span data-i18n="header-contact">お問い合わせ</span>
+      </a>
+
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden h-10 w-10 grid place-items-center rounded-md transition-opacity duration-200 hover:opacity-70"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="relative block h-5 w-5">
+          <svg id="icon-menu" class="absolute inset-0 h-5 w-5 text-cloud" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="absolute inset-0 h-5 w-5 text-cloud" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-slate/40 bg-space/98 backdrop-blur-md"
+  >
+    <nav class="mx-auto max-w-7xl px-6 py-5 flex flex-col gap-1" aria-label="Mobile navigation">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="mobile-nav-link px-4 py-3 text-sm font-medium text-cloud/60 hover:text-cloud hover:bg-white/[0.05] rounded-md transition-all duration-200 border border-transparent hover:border-slate/50"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="mobile-nav-link mt-3 inline-flex items-center justify-center gap-2 rounded-md bg-azure px-5 py-3 text-sm text-space font-semibold hover:bg-[#E7AE36] transition-all duration-200 shadow-[0_2px_14px_rgba(255,198,79,0.35)]"
+      >
+        <span data-i18n="header-contact">お問い合わせ</span>
+      </a>
+
+      <!-- Language toggle (mobile) -->
+      <div class="flex items-center gap-2 px-4 pt-3 border-t border-slate/30 mt-1">
+        <span class="text-cloud/40 text-xs tracking-widest uppercase">Language</span>
+        <div class="flex items-center border border-slate/50 rounded-sm overflow-hidden text-[11px] font-semibold tracking-widest ml-auto">
+          <button
+            data-lang-btn="ja"
+            class="px-2.5 py-1.5 transition-colors duration-150 text-cloud bg-slate/40"
+            aria-label="日本語に切り替え"
+          >JP</button>
+          <span class="w-px h-3 bg-slate/70 shrink-0"></span>
+          <button
+            data-lang-btn="en"
+            class="px-2.5 py-1.5 transition-colors duration-150 text-cloud/40 hover:text-cloud"
+            aria-label="Switch to English"
+          >EN</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import gsap from 'gsap';
+
+  // ── i18n translations (module-level, run once) ───────────────────────────
+  const LANG_KEY = "aozora-lang";
+
+  const T: Record<string, Record<string, string>> = {
+    ja: {
+      "header-contact": "お問い合わせ",
+      "hero-h1": "青空が目指しているのは<br />「ちょっと驚くサービス」<br />の提供です。",
+      "hero-sub": "沖縄・東京・ネパール拠点のコスト競争力で、中小企業のWeb課題を解決します。",
+      "hero-cta-primary": "無料相談はこちら",
+      "hero-cta-secondary": "サービスを見る",
+      "about-h2": "私たち株式会社青空は、沖縄・東京・ネパールに拠点を置くWEB制作会社です。",
+      "about-p": "各拠点で連携を取りながら、それぞれの強みを生かしお客様に【ちょっと】驚いてもらうサービスを制作・提供致します。",
+      "about-stat-0-label": "事業所数",
+      "about-stat-0-suffix": "拠点",
+      "about-stat-1-label": "スタッフ人数",
+      "about-stat-1-suffix": "人",
+      "about-stat-2-label": "年間プロジェクト数",
+      "about-stat-2-suffix": "件以上",
+      "service-h2": "ウェブサイト制作・コーディング",
+      "service-p": "確かな技術と品質で、ターゲットやデバイスに最適なWEBサイトを制作。",
+      "service-interstitial-h3": "お客様のビジネスに合わせた<br class=\"hidden sm:block\" />最適なソリューションを提供します。",
+      "service-interstitial-p": "コーポレートサイトからECサイト、マッチングプラットフォームまで、青空が培った技術力でお客様の課題を解決します。",
+      "service-container-h3": "提供サービス一覧",
+      "service-count": "4 サービス",
+      "service-card-0-tag": "コーポレートサイト",
+      "service-card-0-title": "シンプルサイト",
+      "service-card-0-desc": "まずは自社のホームページを制作し、更新頻度がほとんどない方向け 弊社提案のサンプルデザインまたはお客様指定の参考サイトを元に小規模ページの制作を実施。",
+      "service-card-1-tag": "コーポレートサイト",
+      "service-card-1-title": "フルオーダーWordpressプラン",
+      "service-card-1-desc": "オリジナルデザインで、お知らせや商品などの更新頻度が高い方向け。構築後は自社で更新対応を運用することも可能。",
+      "service-card-2-tag": "ECサイト",
+      "service-card-2-title": "Shopify",
+      "service-card-2-desc": "テンプレートのカスタマイズ性が高く､EC運用に有用な機能が多数あり､標準機能でもメールマガジンの配信やインスタグラム連携などマーケティング機能が利用可能",
+      "service-card-3-tag": "マッチング",
+      "service-card-3-title": "マッチングサイト",
+      "service-card-3-desc": "スキルマッチング、商品マッチング、時間や場所のマッチングなど、今話題のシェアリングエコノミーサービスを始めませんか？独自エンジンを元に、スピーディーに開発します。",
+      "service-details-link": "詳細 →",
+      "service-extra-0-title": "保守・運営サポート",
+      "service-extra-0-desc": "更新業務、サーバー・ドメインの管理、SEO対策など、サイト運用に関わる業務をサポート。",
+      "service-extra-1-title": "VRコンテンツ制作",
+      "service-extra-1-desc": "スマートフォンの加速度センサーを使い空間を「体感」できるサービスです。",
+      "service-extra-2-title": "SEO対策",
+      "service-extra-2-desc": "SEOの最新傾向を反映しながら効果の上がるコンテンツ、サイト構造を構築。",
+      "service-extra-3-title": "オリジナルアプリ制作",
+      "service-extra-3-desc": "ビジネスを最適化するBtoB／BtoCアプリを素早く、リーズナブルに開発。",
+      "news-cat-0": "お知らせ",
+      "news-title-0": "新年のご挨拶",
+      "news-cat-1": "お知らせ",
+      "news-title-1": "ウェブサイトをリニューアルしました",
+      "news-cat-2": "サービス",
+      "news-title-2": "ネパール拠点を活用したオフショア開発サービスのご案内",
+      "news-all": "一覧を見る",
+      "portfolio-h2": "実績・制作事例",
+      "portfolio-p": "業種・規模を問わず、課題に合わせた制作・開発を行っています。掲載事例はすべて匿名化しています。",
+      "portfolio-cta": "案件を相談する →",
+      "portfolio-card-0-industry": "不動産業",
+      "portfolio-card-0-service": "コーポレートサイト + SEO対策",
+      "portfolio-card-0-outcome": "問い合わせ数が施策前比 +120%",
+      "portfolio-card-0-detail": "沖縄県内の不動産会社向けに、地域SEOを意識したコーポレートサイトを制作。コンテンツ設計からローカル検索対策まで一貫支援。",
+      "portfolio-outcome-label": "成果",
+      "portfolio-card-1-industry": "アパレル・小売業",
+      "portfolio-card-1-service": "ECサイト構築（Shopify）",
+      "portfolio-card-1-outcome": "オープン初月からコンバージョン率 3.2%",
+      "portfolio-card-1-detail": "関東の小売業者向けにShopifyでECサイトを構築。インスタグラム連携・メールマーケティング機能を活用し、立ち上げから運用まで支援。",
+      "portfolio-card-2-industry": "人材・スタートアップ",
+      "portfolio-card-2-service": "マッチングプラットフォーム開発",
+      "portfolio-card-2-outcome": "ローンチ3ヶ月でユーザー登録 1,000名超",
+      "portfolio-card-2-detail": "スキルシェアリングを軸とした独自マッチングプラットフォームを開発。青空の独自エンジンを活用し、短期間・コスト効率よく実現。",
+      "company-h2": "会社概要",
+      "company-dt-0": "社　名",
+      "company-dd-0": "株式会社青空",
+      "company-dt-1": "創　業",
+      "company-dd-1": "2011年1月",
+      "company-dt-2": "事業内容",
+      "company-dd-2": "<ul class=\"space-y-1\"><li>ウェブサイト制作</li><li>ウェブコンテンツ制作</li><li>アプリ制作</li><li>ウェブマーケティング</li><li>システム開発</li><li>BPO・各種業務委託</li></ul>",
+      "company-timeline-0-desc": "株式会社青空創業",
+      "company-timeline-1-desc": "業務拡張のため東京支社設立",
+      "company-timeline-2-desc": "業務拡張のためネパール支社設立",
+      "company-timeline-3-desc": "業務拡張のため那覇支社設立",
+      "cta-h2": "つくることより、<br class=\"hidden sm:block\" />成果を出すことに、時間を使う。",
+      "cta-p": "目的と期限を最初に定義し、必要な施策を必要な順番で実装します。制作会社ではなく、成果責任を持つ実装パートナーとして伴走します。",
+      "cta-btn": "無料相談を申し込む",
+      "cta-call": "098-989-6318 に電話する",
+      "cta-hours": "平日 9:00-18:00 / 初回ご相談・お見積り無料",
+      "map-h2": "アクセス",
+      "map-p": "各拠点の所在地をスライドで確認できます。矢印またはドットから切り替えてご覧ください。",
+      "map-office-0-name": "沖縄本社（沖縄市）",
+      "map-office-1-name": "那覇支社（那覇市）",
+      "map-office-2-name": "東京支社（東京）",
+      "map-office-3-name": "ネパール支社（カトマンズ）",
+      "map-label-postal": "郵便番号",
+      "map-label-address": "住所",
+      "map-label-telfax": "TEL / FAX",
+      "map-open-maps": "Google Mapsで開く",
+      "footer-hq-h3": "本社情報",
+      "footer-contact-h3": "お問い合わせ",
+      "footer-contact-form": "お問い合わせフォーム",
+      "footer-map-link": "拠点アクセスを見る",
+      "contact-h1": "お問い合わせ",
+      "contact-sub": "サービスに関するご質問・ご相談・お見積りなど、お気軽にお問い合わせください。担当者より2営業日以内にご連絡いたします。",
+      "contact-office-h2": "本社（沖縄市）",
+      "contact-estimate-title": "初回ご相談・お見積り無料",
+      "contact-estimate-body": "内容・規模・ご予算に合わせた最適な提案を行います。まずはお気軽にご相談ください。",
+      "contact-map-link": "拠点アクセスを見る",
+    },
+    en: {
+      "header-contact": "Contact",
+      "hero-h1": "Aozora's mission is to deliver<br />services that make<br />you go \"wow.\"",
+      "hero-sub": "Offices in Okinawa, Tokyo, and Nepal — cost-competitive web solutions for SMEs.",
+      "hero-cta-primary": "Free Consultation",
+      "hero-cta-secondary": "See Services",
+      "about-h2": "We are Aozora Co., Ltd., a web production company with offices in Okinawa, Tokyo, and Nepal.",
+      "about-p": "Leveraging the strengths of each office, we deliver services that go just a little beyond your expectations.",
+      "about-stat-0-label": "Offices",
+      "about-stat-0-suffix": "locations",
+      "about-stat-1-label": "Staff",
+      "about-stat-1-suffix": "members",
+      "about-stat-2-label": "Annual Projects",
+      "about-stat-2-suffix": "+",
+      "service-h2": "Web Production & Development",
+      "service-p": "Crafting websites optimized for your audience and devices with proven quality.",
+      "service-interstitial-h3": "Tailored solutions for<br class=\"hidden sm:block\" />your business goals.",
+      "service-interstitial-p": "From corporate sites to e-commerce and matching platforms, we solve your challenges with Aozora's expertise.",
+      "service-container-h3": "Our Services",
+      "service-count": "4 services",
+      "service-card-0-tag": "Corporate Site",
+      "service-card-0-title": "Simple Site",
+      "service-card-0-desc": "For businesses launching their first website with minimal update needs. Built from our sample designs or a reference site of your choice.",
+      "service-card-1-tag": "Corporate Site",
+      "service-card-1-title": "Full-Order WordPress Plan",
+      "service-card-1-desc": "Custom design for businesses that frequently update news, products, and more. Self-managed updates possible after handoff.",
+      "service-card-2-tag": "E-Commerce",
+      "service-card-2-title": "Shopify",
+      "service-card-2-desc": "Highly customizable templates with powerful e-commerce features including newsletters, Instagram integration, and more.",
+      "service-card-3-tag": "Matching",
+      "service-card-3-title": "Matching Platform",
+      "service-card-3-desc": "Launch a skill, product, or time/space sharing service. Built on our proprietary engine — fast and cost-efficient.",
+      "service-details-link": "Details →",
+      "service-extra-0-title": "Maintenance & Support",
+      "service-extra-0-desc": "Content updates, server and domain management, SEO — ongoing support for your site operations.",
+      "service-extra-1-title": "VR Content",
+      "service-extra-1-desc": "Immersive spatial experiences powered by smartphone accelerometer sensors.",
+      "service-extra-2-title": "SEO",
+      "service-extra-2-desc": "Content strategy and site architecture built on the latest SEO best practices.",
+      "service-extra-3-title": "Custom App Development",
+      "service-extra-3-desc": "BtoB / BtoC apps optimized for your business — fast delivery, competitive pricing.",
+      "news-cat-0": "Announcement",
+      "news-title-0": "New Year Greetings",
+      "news-cat-1": "Announcement",
+      "news-title-1": "Website Relaunched",
+      "news-cat-2": "Service",
+      "news-title-2": "Offshore Development Service via Nepal Office",
+      "news-all": "View All",
+      "portfolio-h2": "Work & Case Studies",
+      "portfolio-p": "We work across industries and scales, tailored to each challenge. All cases are anonymized.",
+      "portfolio-cta": "Discuss a Project →",
+      "portfolio-card-0-industry": "Real Estate",
+      "portfolio-card-0-service": "Corporate Site + SEO",
+      "portfolio-card-0-outcome": "Inquiries up +120% vs. pre-launch",
+      "portfolio-card-0-detail": "Built a corporate site for an Okinawa real estate firm with local SEO focus. End-to-end support from content planning to local search optimization.",
+      "portfolio-outcome-label": "Result",
+      "portfolio-card-1-industry": "Apparel & Retail",
+      "portfolio-card-1-service": "E-Commerce (Shopify)",
+      "portfolio-card-1-outcome": "3.2% conversion rate from launch month",
+      "portfolio-card-1-detail": "Launched a Shopify store for a Kanto retailer with Instagram integration and email marketing. Supported from launch through ongoing operations.",
+      "portfolio-card-2-industry": "HR & Startup",
+      "portfolio-card-2-service": "Matching Platform Development",
+      "portfolio-card-2-outcome": "1,000+ users registered within 3 months",
+      "portfolio-card-2-detail": "Built a custom skill-sharing matching platform using Aozora's proprietary engine. Delivered quickly and cost-efficiently.",
+      "company-h2": "Company Profile",
+      "company-dt-0": "Company",
+      "company-dd-0": "Aozora Co., Ltd.",
+      "company-dt-1": "Founded",
+      "company-dd-1": "January 2011",
+      "company-dt-2": "Business",
+      "company-dd-2": "<ul class=\"space-y-1\"><li>Website Production</li><li>Web Content Creation</li><li>App Development</li><li>Web Marketing</li><li>System Development</li><li>BPO &amp; Outsourcing</li></ul>",
+      "company-timeline-0-desc": "Aozora Co., Ltd. founded",
+      "company-timeline-1-desc": "Tokyo office opened for business expansion",
+      "company-timeline-2-desc": "Nepal office opened for business expansion",
+      "company-timeline-3-desc": "Naha office opened for business expansion",
+      "cta-h2": "Spend less time building,<br class=\"hidden sm:block\" />and more time delivering results.",
+      "cta-p": "We define goals and deadlines first, then implement only what moves your business forward. Not just a vendor, but an execution partner accountable for outcomes.",
+      "cta-btn": "Start Free Consultation",
+      "cta-call": "Call 098-989-6318",
+      "cta-hours": "Mon–Fri 9:00–18:00 / First consultation &amp; estimate free",
+      "map-h2": "Access",
+      "map-p": "Browse our office locations using the carousel. Use the arrows or dots to switch.",
+      "map-office-0-name": "Okinawa HQ (Okinawa City)",
+      "map-office-1-name": "Naha Branch (Naha City)",
+      "map-office-2-name": "Tokyo Branch",
+      "map-office-3-name": "Nepal Branch (Kathmandu)",
+      "map-label-postal": "Postal Code",
+      "map-label-address": "Address",
+      "map-label-telfax": "TEL / FAX",
+      "map-open-maps": "Open in Google Maps",
+      "footer-hq-h3": "Head Office",
+      "footer-contact-h3": "Contact",
+      "footer-contact-form": "Contact Form",
+      "footer-map-link": "View Office Locations",
+      "contact-h1": "Contact Us",
+      "contact-sub": "Questions, consultations, or estimates — feel free to reach out. Our team will reply within 2 business days.",
+      "contact-office-h2": "HQ (Okinawa City)",
+      "contact-estimate-title": "Free consultation &amp; estimate",
+      "contact-estimate-body": "We'll propose the best approach tailored to your content, scale, and budget. No commitment required.",
+      "contact-map-link": "View office locations",
+    },
+  };
+
+  function applyLang(lang: string) {
+    const dict = T[lang] ?? T["ja"];
+    document.querySelectorAll<HTMLElement>("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n")!;
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+    // Sync toggle buttons
+    document.querySelectorAll<HTMLElement>("[data-lang-btn]").forEach((btn) => {
+      const isActive = btn.getAttribute("data-lang-btn") === lang;
+      if (isActive) {
+        btn.classList.add("text-cloud", "bg-slate/40");
+        btn.classList.remove("text-cloud/40", "bg-transparent");
+      } else {
+        btn.classList.remove("text-cloud", "bg-slate/40");
+        btn.classList.add("text-cloud/40", "bg-transparent");
+      }
+    });
+    document.documentElement.lang = lang === "en" ? "en" : "ja";
+    document.dispatchEvent(new CustomEvent("aozora-lang", { detail: lang }));
+  }
+
+  // ── Re-init on every page load (handles Astro View Transitions) ──────────
+  document.addEventListener("astro:page-load", () => {
+    // Scroll-aware background
+    const header = document.querySelector("[data-header]") as HTMLElement | null;
+    if (header) {
+      const update = () => {
+        if (window.scrollY > 16) {
+          header.classList.add("bg-space/95", "backdrop-blur-md", "border-b", "border-slate/50", "shadow-[0_1px_40px_rgba(0,0,0,0.5)]");
+        } else {
+          header.classList.remove("bg-space/95", "backdrop-blur-md", "border-b", "border-slate/50", "shadow-[0_1px_40px_rgba(0,0,0,0.5)]");
+        }
+      };
+      update();
+      window.addEventListener("scroll", update, { passive: true });
+    }
+
+    // Mobile menu toggle — GSAP animated
+    const toggle     = document.getElementById("mobile-menu-toggle") as HTMLButtonElement | null;
+    const mobileMenu = document.getElementById("mobile-menu")        as HTMLElement | null;
+    const iconMenu   = document.getElementById("icon-menu")          as SVGElement | null;
+    const iconClose  = document.getElementById("icon-close")         as SVGElement | null;
+
+    if (toggle && mobileMenu && iconMenu && iconClose) {
+      let menuOpen = false;
+
+      // Initialise hidden state via GSAP (overrides any Tailwind hidden class)
+      gsap.set(mobileMenu, { display: 'none' });
+      gsap.set(iconClose,  { opacity: 0, scale: 0.65, rotate: -90 });
+      gsap.set(iconMenu,   { opacity: 1, scale: 1,    rotate: 0   });
+
+      function openMenu() {
+        menuOpen = true;
+        toggle.setAttribute("aria-expanded", "true");
+
+        // Slide-down panel
+        gsap.set(mobileMenu, { display: 'block', height: 0, opacity: 0, overflow: 'hidden' });
+        gsap.to(mobileMenu, {
+          height: 'auto', opacity: 1,
+          duration: 0.42, ease: 'expo.out',
+          onComplete: () => gsap.set(mobileMenu, { overflow: '' }),
+        });
+
+        // Stagger nav links + lang row
+        const links   = Array.from(mobileMenu.querySelectorAll('.mobile-nav-link'));
+        const langRow = mobileMenu.querySelector<HTMLElement>('.flex.items-center.gap-2');
+        gsap.fromTo(
+          langRow ? [...links, langRow] : links,
+          { opacity: 0, x: -18 },
+          { opacity: 1, x: 0, stagger: 0.05, duration: 0.3, ease: 'power2.out', delay: 0.08 }
+        );
+
+        // Icon morph: menu → ✕
+        gsap.to(iconMenu,  { opacity: 0, scale: 0.65, rotate: 90,  duration: 0.16, ease: 'power2.in' });
+        gsap.to(iconClose, { opacity: 1, scale: 1,    rotate: 0,   duration: 0.22, delay: 0.14, ease: 'back.out(2)' });
+      }
+
+      function closeMenu() {
+        menuOpen = false;
+        toggle.setAttribute("aria-expanded", "false");
+
+        // Slide-up panel
+        gsap.set(mobileMenu, { overflow: 'hidden' });
+        gsap.to(mobileMenu, {
+          height: 0, opacity: 0,
+          duration: 0.28, ease: 'power3.in',
+          onComplete: () => gsap.set(mobileMenu, { display: 'none', clearProps: 'height,opacity,overflow' }),
+        });
+
+        // Icon morph: ✕ → menu
+        gsap.to(iconClose, { opacity: 0, scale: 0.65, rotate: 90,  duration: 0.16, ease: 'power2.in' });
+        gsap.to(iconMenu,  { opacity: 1, scale: 1,    rotate: 0,   duration: 0.22, delay: 0.14, ease: 'back.out(2)' });
+      }
+
+      toggle.addEventListener("click", () => { menuOpen ? closeMenu() : openMenu(); });
+
+      mobileMenu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+        link.addEventListener("click", () => { if (menuOpen) closeMenu(); });
+      });
+    }
+
+    // Smooth anchor scroll via Lenis (home page only)
+    if (window.location.pathname === "/") {
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="#"], a[href^="/#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (e) => {
+          const href = anchor.getAttribute("href");
+          if (!href) return;
+          const hash = href.startsWith("/#") ? href.slice(1) : href;
+          if (!hash || hash === "#") return;
+          const target = document.querySelector(hash);
+          if (!target) return;
+          e.preventDefault();
+          const lenis = (window as any).__lenis;
+          if (lenis) {
+            lenis.scrollTo(hash, { offset: -72, duration: 1.2 });
+          } else {
+            const y = target.getBoundingClientRect().top + window.scrollY - 72;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        });
+      });
+    }
+
+    // Lang toggle click handlers
+    document.querySelectorAll<HTMLElement>("[data-lang-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang-btn")!;
+        localStorage.setItem(LANG_KEY, lang);
+        applyLang(lang);
+      });
+    });
+
+    // Apply stored language to current page content
+    applyLang(localStorage.getItem(LANG_KEY) ?? "ja");
+  });
+</script>

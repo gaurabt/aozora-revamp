@@ -1,0 +1,80 @@
+---
+---
+
+<section id="company" class="py-24 lg:py-32 bg-slate">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+    <div
+      class="text-xs uppercase tracking-widest text-cyan mb-6"
+      data-reveal
+      data-scramble="Company"
+    >Company</div>
+    <h2 data-i18n="company-h2" class="font-bold text-3xl lg:text-4xl text-cloud mb-16" data-reveal>会社概要</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+      <!-- Left: Company info table -->
+      <div data-reveal>
+        <dl class="divide-y divide-slate/60">
+          <div class="flex gap-8 py-6">
+            <dt data-i18n="company-dt-0" class="text-cloud/50 text-sm font-medium w-24 shrink-0">社　名</dt>
+            <dd data-i18n="company-dd-0" class="text-cloud text-sm">株式会社青空</dd>
+          </div>
+          <div class="flex gap-8 py-6">
+            <dt data-i18n="company-dt-1" class="text-cloud/50 text-sm font-medium w-24 shrink-0">創　業</dt>
+            <dd data-i18n="company-dd-1" class="text-cloud text-sm">2011年1月</dd>
+          </div>
+          <div class="flex gap-8 py-6">
+            <dt data-i18n="company-dt-2" class="text-cloud/50 text-sm font-medium w-24 shrink-0">事業内容</dt>
+            <dd data-i18n="company-dd-2" class="text-cloud text-sm leading-relaxed">
+              <ul class="space-y-1">
+                <li>ウェブサイト制作</li>
+                <li>ウェブコンテンツ制作</li>
+                <li>アプリ制作</li>
+                <li>ウェブマーケティング</li>
+                <li>システム開発</li>
+                <li>BPO・各種業務委託</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Right: Timeline with draw animation -->
+      <div data-reveal>
+        <ol class="relative ml-2 space-y-0">
+          <!-- The line (GSAP draws this) -->
+          <div
+            class="timeline-line absolute left-0 top-0 bottom-0 w-px bg-cyan/40"
+            style="transform-origin: top center; transform: scaleY(0);"
+          ></div>
+
+          <li class="mb-8 ml-6">
+            <span class="timeline-dot absolute -left-[7px] flex h-4 w-4 items-center justify-center rounded-full bg-cyan ring-4 ring-slate" style="opacity:0;transform:scale(0)"></span>
+            <time class="text-cloud font-bold text-base block mb-1">2011年1月</time>
+            <p data-i18n="company-timeline-0-desc" class="text-cloud/55 text-sm">株式会社青空創業</p>
+          </li>
+
+          <li class="mb-8 ml-6">
+            <span class="timeline-dot absolute -left-[7px] flex h-4 w-4 items-center justify-center rounded-full bg-cyan ring-4 ring-slate" style="opacity:0;transform:scale(0)"></span>
+            <time class="text-cloud font-bold text-base block mb-1">2016年4月</time>
+            <p data-i18n="company-timeline-1-desc" class="text-cloud/55 text-sm">業務拡張のため東京支社設立</p>
+          </li>
+
+          <li class="mb-8 ml-6">
+            <span class="timeline-dot absolute -left-[7px] flex h-4 w-4 items-center justify-center rounded-full bg-cyan ring-4 ring-slate" style="opacity:0;transform:scale(0)"></span>
+            <time class="text-cloud font-bold text-base block mb-1">2018年7月</time>
+            <p data-i18n="company-timeline-2-desc" class="text-cloud/55 text-sm">業務拡張のためネパール支社設立</p>
+          </li>
+
+          <li class="ml-6">
+            <span class="timeline-dot absolute -left-[7px] flex h-4 w-4 items-center justify-center rounded-full bg-cyan ring-4 ring-slate" style="opacity:0;transform:scale(0)"></span>
+            <time class="text-cloud font-bold text-base block mb-1">2019年1月</time>
+            <p data-i18n="company-timeline-3-desc" class="text-cloud/55 text-sm">業務拡張のため那覇支社設立</p>
+          </li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>

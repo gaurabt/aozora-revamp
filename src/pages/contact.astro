@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm.tsx";
+import SmoothScroll from "../components/SmoothScroll.tsx";
+---
+
+<Layout
+  title="お問い合わせ | 株式会社青空"
+  description="株式会社青空へのお問い合わせはこちらから。コーポレートサイト制作、ECサイト、アプリ開発など、お気軽にご相談ください。"
+  canonical="https://aozora-okinawa.com/contact"
+>
+  <SmoothScroll client:load />
+  <Header />
+
+  <main class="pt-[72px] min-h-screen bg-paper">
+
+    <!-- Page hero -->
+    <section class="py-16 lg:py-24 bg-space border-b border-slate/70">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div data-reveal>
+          <p class="text-xs uppercase tracking-widest text-cyan mb-4" data-scramble="Contact">Contact</p>
+          <h1 data-i18n="contact-h1" class="text-cloud font-bold text-3xl lg:text-5xl leading-tight mb-5">
+            お問い合わせ
+          </h1>
+          <p data-i18n="contact-sub" class="text-cloud/60 text-sm lg:text-base leading-relaxed max-w-xl">
+            サービスに関するご質問・ご相談・お見積りなど、お気軽にお問い合わせください。担当者より2営業日以内にご連絡いたします。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form + info grid -->
+    <section class="py-16 lg:py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-start">
+
+          <!-- Form card -->
+          <div
+            class="border border-accent/25 bg-paper rounded-sm p-8 lg:p-10 shadow-sm"
+            data-reveal
+          >
+            <ContactForm client:load />
+          </div>
+
+          <!-- Info sidebar -->
+          <aside
+            class="flex flex-col gap-6"
+            data-reveal
+          >
+            <!-- Office info -->
+            <div class="border border-accent/25 bg-paper rounded-sm p-6 shadow-sm">
+              <p class="text-xs uppercase tracking-widest text-cyan mb-4">Head Office</p>
+              <h2 data-i18n="contact-office-h2" class="text-cloud font-semibold text-base mb-4">本社（沖縄市）</h2>
+              <div class="text-cloud/55 text-sm leading-loose space-y-1.5">
+                <p>〒904-0011</p>
+                <p>沖縄県沖縄市照屋1-11-13 2F</p>
+                <p>TEL 098-989-6318</p>
+                <p>FAX 098-989-6319</p>
+                <p class="mt-2 text-cloud/40 text-xs">平日 9:00–18:00</p>
+              </div>
+            </div>
+
+            <!-- Hours + note -->
+            <div class="border border-accent/25 bg-paper rounded-sm p-6 shadow-sm">
+              <p class="text-xs uppercase tracking-widest text-cyan mb-4">Estimate</p>
+              <p data-i18n="contact-estimate-title" class="text-cloud font-semibold text-sm mb-2">初回ご相談・お見積り無料</p>
+              <p data-i18n="contact-estimate-body" class="text-cloud/50 text-xs leading-relaxed">
+                内容・規模・ご予算に合わせた最適な提案を行います。まずはお気軽にご相談ください。
+              </p>
+            </div>
+
+            <!-- Branch offices -->
+            <div class="border border-accent/25 bg-paper rounded-sm p-6 shadow-sm">
+              <p class="text-xs uppercase tracking-widest text-cyan mb-4">Branches</p>
+              <ul class="space-y-3 text-sm text-cloud/55">
+                <li class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-cyan shrink-0"></span>
+                  <span data-i18n="map-office-1-name">那覇支社（那覇市）</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-cyan shrink-0"></span>
+                  <span data-i18n="map-office-2-name">東京支社（東京）</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-cyan shrink-0"></span>
+                  <span data-i18n="map-office-3-name">ネパール支社（カトマンズ）</span>
+                </li>
+              </ul>
+              <a
+                href="/#map"
+                class="mt-4 inline-flex items-center gap-1.5 text-cyan text-xs font-medium hover:text-accent transition-colors"
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+                <span data-i18n="contact-map-link">拠点アクセスを見る</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+

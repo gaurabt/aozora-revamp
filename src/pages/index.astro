@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
+import News from "../components/sections/News.astro";
+import Service from "../components/sections/Service.astro";
+import Company from "../components/sections/Company.astro";
+import MapSection from "../components/sections/MapSection.astro";
+import CTA from "../components/sections/CTA.astro";
+import Portfolio from "../components/sections/Portfolio.astro";
+import SmoothScroll from "../components/SmoothScroll.tsx";
+import MarqueeStrip from "../components/MarqueeStrip.astro";
+---
+
+<Layout
+  title="HP制作・Web開発の株式会社青空｜沖縄・東京・ネパール"
+  description="株式会社青空は沖縄・東京・ネパール拠点で、コーポレートサイト制作、EC構築、アプリ開発、運用保守まで一気通貫で支援するWeb制作会社です。"
+  canonical="https://aozora-okinawa.com/"
+>
+  <SmoothScroll client:load />
+  <Header />
+  <main>
+    <Hero />
+    <MarqueeStrip />
+    <About />
+    <Service />
+    <Portfolio />
+    <News />
+    <Company />
+    <MapSection />
+    <CTA />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,54 @@
+---
+---
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function init() {
+  const reveals = document.querySelectorAll<HTMLElement>('[data-reveal]');
+
+  if (reduced) {
+    reveals.forEach((el) => {
+      el.style.removeProperty('opacity');
+      el.style.removeProperty('transform');
+    });
+    return;
+  }
+
+  reveals.forEach((el) => {
+    if (el.dataset.revealReady) return;
+    el.dataset.revealReady = '1';
+
+    const delay = parseFloat(el.dataset.revealDelay || '0');
+
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 32 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.75,
+        delay,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          once: true,
+        },
+      }
+    );
+  });
+}
+
+// astro:page-load fires on initial load AND every navigation (ClientRouter)
+document.addEventListener('astro:page-load', () => {
+  document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
+    delete el.dataset.revealReady;
+  });
+  init();
+});
+</script>

@@ -1,0 +1,48 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-space border-t border-slate/70">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1fr] gap-10 lg:gap-12 pb-10 border-b border-slate/60">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="h-9 w-9 rounded-md bg-slate grid place-items-center">
+            <svg viewBox="0 0 100 100" class="h-5 w-5 text-cyan" fill="currentColor"><circle cx="35" cy="42" r="6" /><circle cx="65" cy="42" r="6" /><path d="M30 60 Q50 78 70 60" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round" /></svg>
+          </div>
+          <span class="text-cloud text-base font-semibold tracking-wide">株式会社青空</span>
+        </div>
+        <p class="text-cloud/50 text-sm leading-relaxed max-w-sm">
+          ウェブサイト制作・ウェブコンテンツ制作・アプリ制作・システム開発を通じて、企業のデジタル成長を支援します。
+        </p>
+      </div>
+
+      <div>
+        <h3 data-i18n="footer-hq-h3" class="text-cloud text-sm font-semibold mb-4">本社情報</h3>
+        <div class="text-cloud/55 text-sm leading-relaxed space-y-2">
+          <p>〒904-0011 沖縄県沖縄市照屋1-11-13 2F</p>
+          <p>TEL 098-989-6318</p>
+          <p>FAX 098-989-6319</p>
+          <p>平日 9:00-18:00</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 data-i18n="footer-contact-h3" class="text-cloud text-sm font-semibold mb-4">お問い合わせ</h3>
+        <div class="flex flex-col gap-3">
+          <a href="/contact" data-i18n="footer-contact-form" class="inline-flex items-center text-cyan hover:text-accent transition-colors text-sm font-medium">
+            お問い合わせフォーム
+          </a>
+          <a href="#map" data-i18n="footer-map-link" class="inline-flex items-center text-cloud/55 hover:text-cloud transition-colors text-sm">
+            拠点アクセスを見る
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div class="text-cloud/35 text-xs">All rights reserved.</div>
+      <div class="text-cloud/35 text-xs tabular">© {year} Aozora Co., Ltd.</div>
+    </div>
+  </div>
+</footer>

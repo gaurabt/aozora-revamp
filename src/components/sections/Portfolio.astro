@@ -1,0 +1,79 @@
+---
+const cases = [
+  {
+    industry: "不動産業",
+    service: "コーポレートサイト + SEO対策",
+    outcome: "問い合わせ数が施策前比 +120%",
+    detail: "沖縄県内の不動産会社向けに、地域SEOを意識したコーポレートサイトを制作。コンテンツ設計からローカル検索対策まで一貫支援。",
+    tags: ["WordPress", "SEO", "コーポレート"],
+  },
+  {
+    industry: "アパレル・小売業",
+    service: "ECサイト構築（Shopify）",
+    outcome: "オープン初月からコンバージョン率 3.2%",
+    detail: "関東の小売業者向けにShopifyでECサイトを構築。インスタグラム連携・メールマーケティング機能を活用し、立ち上げから運用まで支援。",
+    tags: ["Shopify", "EC", "SNS連携"],
+  },
+  {
+    industry: "人材・スタートアップ",
+    service: "マッチングプラットフォーム開発",
+    outcome: "ローンチ3ヶ月でユーザー登録 1,000名超",
+    detail: "スキルシェアリングを軸とした独自マッチングプラットフォームを開発。青空の独自エンジンを活用し、短期間・コスト効率よく実現。",
+    tags: ["オリジナル開発", "マッチング", "オフショア"],
+  },
+];
+---
+
+<section id="portfolio" class="py-24 lg:py-32 bg-slate">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+    <div
+      class="text-xs uppercase tracking-widest text-cyan mb-6"
+      data-reveal
+      data-scramble="Works"
+    >Works</div>
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14" data-reveal>
+      <div>
+        <h2 data-i18n="portfolio-h2" class="font-bold text-3xl lg:text-4xl text-cloud leading-snug">
+          実績・制作事例
+        </h2>
+        <p data-i18n="portfolio-p" class="text-cloud/55 text-base mt-3 max-w-lg">
+          業種・規模を問わず、課題に合わせた制作・開発を行っています。掲載事例はすべて匿名化しています。
+        </p>
+      </div>
+      <a
+        href="/contact"
+        data-i18n="portfolio-cta"
+        class="btn-magnetic shrink-0 inline-flex items-center gap-2 text-sm text-azure border border-azure/40 rounded-full px-5 py-2.5 hover:bg-azure hover:text-space hover:border-azure transition-colors"
+      >
+        案件を相談する →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" data-reveal>
+      {cases.map((c, i) => (
+        <article class="card-tilt flex flex-col border border-accent/25 bg-paper hover:border-accent/60 transition-all duration-300 rounded-sm overflow-hidden group shadow-sm hover:shadow-md">
+          <div class="border-b border-accent/15 px-6 py-4 flex items-center gap-2">
+            <span data-i18n={`portfolio-card-${i}-industry`} class="text-xs text-cyan tracking-wide">{c.industry}</span>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 data-i18n={`portfolio-card-${i}-service`} class="font-bold text-base text-cloud mb-2 leading-snug">{c.service}</h3>
+            <p data-i18n={`portfolio-card-${i}-detail`} class="text-cloud/55 text-xs leading-relaxed mb-5 flex-1">{c.detail}</p>
+
+            <div class="border-t border-slate/50 pt-4">
+              <div data-i18n="portfolio-outcome-label" class="text-xs text-cloud/40 mb-1 uppercase tracking-wide">成果</div>
+              <div data-i18n={`portfolio-card-${i}-outcome`} class="text-cyan font-semibold text-sm">{c.outcome}</div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-4">
+              {c.tags.map((tag) => (
+                <span class="text-[11px] text-cloud/50 border border-accent/20 rounded-sm px-2 py-0.5">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
